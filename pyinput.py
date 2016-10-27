@@ -5,6 +5,8 @@ try:
 	jq = window.jQuery
 
 	input_c = None
+	
+	jq("body").append('<div class = "inputScreen" style = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.2); z-index: 50;"><div style = "position: fixed; left: calc(50% - 150px); top: calc(50% - 75px); background-color: white;"><p id = "toPrompt"></p><input type = "text" id = "toInput"><input type = "submit" id = "toSubmit"></div></div>')
 
 	def input_callback():
 	    input_value = jq('#toInput').val()
@@ -27,8 +29,10 @@ try:
 	    global input_c
 	    input_c = callback
 	    jq('#toSubmit').on('click', input_fade)
+	
 except:
 	underInput = input
 	def input(text, callback):
 		x = underInput(text+" ")
 		callback(text, x)
+		
